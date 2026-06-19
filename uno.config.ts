@@ -26,6 +26,10 @@ export default mergeConfigs([
         },
         warn: true,
         collections: {
+          carbon: createExternalPackageIconLoader('@iconify-json/carbon'),
+          mdi: createExternalPackageIconLoader('@iconify-json/mdi'),
+          lucide: createExternalPackageIconLoader('@iconify-json/lucide'),
+          bi: createExternalPackageIconLoader('@iconify-json/bi'),
           ...createExternalPackageIconLoader('@proj-airi/lobe-icons'),
         },
       }),
