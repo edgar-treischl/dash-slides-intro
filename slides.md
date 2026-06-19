@@ -83,6 +83,9 @@ src: ./pages/13.md
 src: ./pages/14.md
 ---
 
+---
+src: ./pages/linechart-demo.md
+---
 
 ---
 src: ./pages/end.md

@@ -1,8 +1,8 @@
 {
-  "name": "template-slidev",
+  "name": "dash-slides-intro",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/edgar-treischl/template-slidev.git",
+  "repository": "https://github.com/edgar-treischl/dash-slides-intro.git",
   "author": "edgar.treischl <edgar.treischl@isb.bayern.de>",
   "license": "MIT",
   "devDependencies": {
