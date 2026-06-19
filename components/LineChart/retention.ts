@@ -111,8 +111,21 @@ export async function loadRetentionData(): Promise<RetentionDatum[]> {
     return RETENTION_DATA
   }
 
-  const response = await fetch('/data/retention.json')
+  // Ensure basePath has trailing slash for proper concatenation
+  const basePath = import.meta.env.BASE_URL || '/'
+  const dataPath = basePath.endsWith('/') 
+    ? `${basePath}data/retention.json`
+    : `${basePath}/data/retention.json`
+  
+  console.log('Loading retention data from:', dataPath)
+  const response = await fetch(dataPath)
+  
+  if (!response.ok) {
+    console.error('Failed to load retention data:', response.status, response.statusText)
+    throw new Error(`Failed to load retention data: ${response.status} ${response.statusText}`)
+  }
   const retentionData = await response.json() as RawRetentionDatum[]
+  console.log('Fetched raw data:', retentionData.length, 'rows')
 
   RETENTION_DATA = retentionData
     .filter((row) => {
@@ -145,6 +158,7 @@ export async function loadRetentionData(): Promise<RetentionDatum[]> {
       return true
     })
 
+  console.log('Processed retention data:', RETENTION_DATA.length, 'rows')
   return RETENTION_DATA
 }
 

@@ -34,11 +34,19 @@ interface HoveredPoint {
 
 const hoveredPoint = ref<HoveredPoint | null>(null)
 const data = ref<Map<SchoolType, RetentionDatum[]>>(new Map())
+const loadError = ref<string | null>(null)
 
 // Load data on mount
 onMounted(async () => {
-  const retentionData = await loadRetentionData()
-  data.value = getTimeSeriesData(retentionData)
+  try {
+    const retentionData = await loadRetentionData()
+    console.log('Loaded retention data:', retentionData.length, 'records')
+    data.value = getTimeSeriesData(retentionData)
+    console.log('Time series data:', data.value.size, 'school types')
+  } catch (error) {
+    console.error('Error loading retention data:', error)
+    loadError.value = error instanceof Error ? error.message : 'Unknown error'
+  }
 })
 
 // Get all years from the data
@@ -165,7 +173,11 @@ function handlePointMouseLeave() {
 
 <template>
   <div style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; overflow: visible">
-    <div v-if="allYears.years.length === 0 || displayYears.length === 0" 
+    <div v-if="loadError" 
+         style="padding: 20px; text-align: center; color: red;">
+      Error: {{ loadError }}
+    </div>
+    <div v-else-if="allYears.years.length === 0 || displayYears.length === 0" 
          style="padding: 20px; text-align: center">
       No data available
     </div>
