@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import LineChart from './LineChart/LineChart.vue'
+import RangeSelector from './RangeSelector.vue'
 import { loadRetentionData } from './LineChart/retention'
 import { SCHOOL_TYPES, SCHOOL_TYPE_COLORS, type SchoolType } from './LineChart/retention'
 
@@ -34,23 +35,10 @@ onMounted(async () => {
   }
 })
 
-// Year options for dropdowns
-const yearOptions = computed(() => availableYears.value)
-
-// Constrain selections
-const constrainedMaxYear = computed({
-  get: () => maxYear.value,
-  set: (val) => {
-    maxYear.value = Math.max(val, minYear.value + 1)
-  }
-})
-
-const constrainedMinYear = computed({
-  get: () => minYear.value,
-  set: (val) => {
-    minYear.value = Math.min(val, maxYear.value - 1)
-  }
-})
+const handleRangeChange = ([newMin, newMax]: [number, number]) => {
+  minYear.value = newMin
+  maxYear.value = newMax
+}
 </script>
 
 <template>
@@ -61,25 +49,15 @@ const constrainedMinYear = computed({
         <LineChart :minYear="minYear" :maxYear="maxYear" />
       </div>
 
-      <!-- Year Range Controls -->
-      <div class="controls-row">
-        <div class="control-group">
-          <label for="minYear">Von:</label>
-          <select id="minYear" v-model.number="constrainedMinYear" class="year-select">
-            <option v-for="year in yearOptions" :key="year" :value="year">
-              {{ year }}
-            </option>
-          </select>
-        </div>
-        
-        <div class="control-group">
-          <label for="maxYear">Bis:</label>
-          <select id="maxYear" v-model.number="constrainedMaxYear" class="year-select">
-            <option v-for="year in yearOptions" :key="year" :value="year">
-              {{ year }}
-            </option>
-          </select>
-        </div>
+      <!-- Visual Range Selector (Primary) -->
+      <div class="range-selector-wrapper">
+        <div class="range-selector-label">Select Years2</div>
+        <RangeSelector 
+          :min="availableYears[0] || 0"
+          :max="availableYears[availableYears.length - 1] || 2024"
+          :modelValue="[minYear, maxYear]"
+          @update:modelValue="handleRangeChange"
+        />
       </div>
 
       <!-- Compact Legend -->
@@ -95,6 +73,7 @@ const constrainedMinYear = computed({
           </div>
         </div>
       </div>
+      
     </div>
   </div>
 </template>
@@ -107,6 +86,7 @@ const constrainedMinYear = computed({
   flex-direction: column;
   gap: 0;
   padding: 5px;
+  padding-bottom: 5px;
 }
 
 .content-group {
@@ -116,59 +96,34 @@ const constrainedMinYear = computed({
   flex: 1;
 }
 
-.controls-row {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-  justify-content: center;
-  padding: 6px 12px;
-  background: #f9fafb;
-  border-radius: 8px;
-  border: 1px solid #e5e7eb;
-  margin-top: 4px;
-}
-
-.control-group {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.control-group label {
-  font-size: 13px;
-  font-weight: 600;
-  color: #374151;
-  white-space: nowrap;
-}
-
-.year-select {
-  padding: 5px 10px;
-  font-size: 13px;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
-  background: white;
-  color: #1f2937;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  min-width: 80px;
-}
-
-.year-select:hover {
-  border-color: #0098d4;
-}
-
-.year-select:focus {
-  outline: none;
-  border-color: #0098d4;
-  box-shadow: 0 0 0 3px rgba(0, 152, 212, 0.1);
-}
-
 .chart-wrapper {
-  flex: 1;
+  margin-top:45px;
+  flex: 0 0 auto;
   min-height: 0;
   display: flex;
   align-items: stretch;
   justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* Range Selector */
+.range-selector-wrapper {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 12px;
+  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  margin-bottom: 8px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.range-selector-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 6px;
+  text-align: center;
 }
 
 /* Compact Legend */
