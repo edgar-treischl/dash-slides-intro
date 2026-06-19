@@ -233,7 +233,7 @@ onBeforeUnmount(() => {
   transform: translateY(-50%);
   z-index: 2;
   box-shadow: 0 1px 4px rgba(75, 85, 99, 0.2);
-  transition: box-shadow 0.2s ease;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Thumbs (draggable handles) */
@@ -245,7 +245,7 @@ onBeforeUnmount(() => {
   transform: translate(-50%, -50%);
   z-index: 4;
   cursor: grab;
-  transition: all 0.2s ease;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .thumb:hover .thumb-inner {
@@ -268,7 +268,7 @@ onBeforeUnmount(() => {
   border: 2px solid #6b7280;
   border-radius: 50%;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-  transition: all 0.2s ease;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Labels showing current values */
@@ -295,7 +295,7 @@ onBeforeUnmount(() => {
   border: 1px solid #d1d5db;
   white-space: nowrap;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  transition: all 0.2s ease;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .label-value {

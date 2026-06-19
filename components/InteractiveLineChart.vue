@@ -1,16 +1,17 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import LineChart from './LineChart/LineChart.vue'
-import RangeSelector from './RangeSelector.vue'
 import { loadRetentionData } from './LineChart/retention'
 import { SCHOOL_TYPES, SCHOOL_TYPE_COLORS, type SchoolType } from './LineChart/retention'
 
 // Reactive year range
-const minYear = ref(2015)
-const maxYear = ref(2024)
+const yearRange = ref<[number, number]>([2015, 2024])
 
 // Available years from data
 const availableYears = ref<number[]>([])
+
+const minYear = computed(() => yearRange.value[0])
+const maxYear = computed(() => yearRange.value[1])
 
 // Load available years from data
 onMounted(async () => {
@@ -27,18 +28,12 @@ onMounted(async () => {
     if (availableYears.value.length > 0) {
       const latest = Math.max(...availableYears.value)
       const earliest = Math.min(...availableYears.value)
-      maxYear.value = latest
-      minYear.value = Math.max(earliest, latest - 9) // Last 10 years
+      yearRange.value = [Math.max(earliest, latest - 9), latest]
     }
   } catch (error) {
     console.error('Failed to load years:', error)
   }
 })
-
-const handleRangeChange = ([newMin, newMax]: [number, number]) => {
-  minYear.value = newMin
-  maxYear.value = newMax
-}
 </script>
 
 <template>
@@ -51,12 +46,16 @@ const handleRangeChange = ([newMin, newMax]: [number, number]) => {
 
       <!-- Visual Range Selector (Primary) -->
       <div class="range-selector-wrapper">
-        <div class="range-selector-label">Select Years2</div>
-        <RangeSelector 
+        <div class="range-selector-label">Select Years: {{ minYear }} - {{ maxYear }}</div>
+        <v-range-slider
+          v-model="yearRange"
           :min="availableYears[0] || 0"
           :max="availableYears[availableYears.length - 1] || 2024"
-          :modelValue="[minYear, maxYear]"
-          @update:modelValue="handleRangeChange"
+          :step="1"
+          color="#6b7280"
+          track-color="#e5e7eb"
+          thumb-label
+          class="year-slider"
         />
       </div>
 
@@ -110,7 +109,7 @@ const handleRangeChange = ([newMin, newMax]: [number, number]) => {
 .range-selector-wrapper {
   width: 100%;
   box-sizing: border-box;
-  padding: 8px 12px;
+  padding: 16px 24px;
   background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
   border-radius: 8px;
   border: 1px solid #e5e7eb;
@@ -119,11 +118,29 @@ const handleRangeChange = ([newMin, newMax]: [number, number]) => {
 }
 
 .range-selector-label {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   color: #374151;
-  margin-bottom: 6px;
+  margin-bottom: 16px;
   text-align: center;
+}
+
+.year-slider {
+  padding: 0 8px;
+}
+
+/* Vuetify Range Slider customization */
+:deep(.v-slider) {
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+:deep(.v-slider-thumb) {
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+:deep(.v-slider-track__fill) {
+  background: linear-gradient(90deg, #9ca3af 0%, #6b7280 100%) !important;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Compact Legend */

@@ -20,7 +20,9 @@
     "@iconify-json/carbon": "^1.2.20",
     "@iconify-json/lucide": "^1.2.105",
     "@iconify-json/mdi": "^1.2.3",
+    "@mdi/font": "^7.4.47",
     "@slidev/theme-default": "^0.25.0",
-    "@slidev/theme-seriph": "^0.25.0"
+    "@slidev/theme-seriph": "^0.25.0",
+    "vuetify": "^4.1.2"
   }
 }
