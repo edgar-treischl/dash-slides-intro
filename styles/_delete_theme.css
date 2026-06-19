@@ -1,0 +1,25 @@
+:root {
+  --slidev-theme-primary: #3b82f6;
+}
+
+/* Headings */
+h1 {
+  font-weight: 700;
+}
+
+h2 {
+  opacity: 0.8;
+}
+
+/* Code blocks */
+pre {
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+/* Custom utility */
+.centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,309 @@
+/* =========================
+   BASE THEME
+   ========================= */
+
+:root {
+  /* Layout */
+  --slidev-code-padding: 8px 10px;
+  --glass-blur: 14px;
+
+  /* Glass surfaces */
+  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-bg-strong: rgba(255, 255, 255, 0.78);
+
+  /* Borders */
+  --glass-border: rgba(0, 0, 0, 0.08);
+
+  /* Semantic accents (LIGHT MODE) */
+  --accent-yellow: rgba(250, 204, 21, 0.14);
+  --accent-lime: rgba(132, 204, 22, 0.14);
+  --accent-emerald: rgba(16, 185, 129, 0.14);
+  --accent-sky: rgba(14, 165, 233, 0.14);
+  --accent-red: rgba(239, 68, 68, 0.14);
+}
+
+/* =========================
+   BACKGROUND
+   ========================= */
+
+#slide-content {
+  background:
+    radial-gradient(circle at 20% 10%, rgba(99, 102, 241, 0.08), transparent 40%),
+    radial-gradient(circle at 80% 90%, rgba(16, 185, 129, 0.08), transparent 45%),
+    #ffffff !important;
+}
+
+/* =========================
+   TYPOGRAPHY
+   ========================= */
+
+h6 {
+  text-transform: initial !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+  opacity: 0.75;
+}
+
+/* =========================
+   GLASS SYSTEM
+   ========================= */
+
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+}
+
+.glass-strong {
+  background: var(--glass-bg-strong);
+  backdrop-filter: blur(18px);
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* =========================
+   ACCENT VARIANTS
+   ========================= */
+
+.glass-yellow { background: var(--accent-yellow); }
+.glass-lime { background: var(--accent-lime); }
+.glass-emerald { background: var(--accent-emerald); }
+.glass-sky { background: var(--accent-sky); }
+.glass-red { background: var(--accent-red); }
+
+/* =========================
+   CODE BLOCKS
+   ========================= */
+
+.slidev-code {
+  background: rgba(255, 255, 255, 0.6) !important;
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+}
+
+.slidev-code .line {
+  transition: opacity 200ms ease;
+}
+
+/* =========================
+   TRANSITIONS
+   ========================= */
+
+.slidev-vclick-target {
+  transition:
+    opacity 500ms ease,
+    transform 400ms ease,
+    filter 200ms ease;
+}
+
+.slidev-vclick-hidden {
+  opacity: 0;
+  transform: translateY(6px) scale(0.98);
+  filter: blur(4px);
+  pointer-events: none;
+}
+
+/* =========================
+   FADE ANIMATIONS
+   ========================= */
+
+.fade-out-leave-active {
+  transition:
+    opacity calc(var(--slidev-transition-duration) * 0.6) ease-out,
+    filter 200ms ease;
+}
+
+.fade-out-enter-active {
+  transition:
+    opacity calc(var(--slidev-transition-duration) * 0.8) ease-in,
+    filter 200ms ease;
+  transition-delay: calc(var(--slidev-transition-duration) * 0.6);
+}
+
+.fade-out-enter-from,
+.fade-out-leave-to {
+  opacity: 0;
+  filter: blur(6px);
+}
+
+/* =========================
+   IFRAME
+   ========================= */
+
+iframe {
+  background: white;
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+}
+
+/* =========================
+   MAGIC LINKS
+   ========================= */
+
+.markdown-magic-link {
+  display: inline-flex;
+  align-items: center;
+  transform: translateY(6px);
+  color: rgba(0, 0, 0, 0.7);
+  gap: 0.25rem;
+  padding: 2px 6px;
+  border-radius: 6px;
+  transition: all 200ms ease;
+}
+
+.markdown-magic-link:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* =========================
+   GLASS UTILITIES
+   ========================= */
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+}
+
+.glass-impact {
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(16px);
+  border-radius: 14px;
+}
+
+/* =========================
+   ANIMATIONS
+   ========================= */
+
+@keyframes balance-shake {
+  0% { transform: rotate(13deg); }
+  50% { transform: rotate(20deg); }
+  100% { transform: rotate(13deg); }
+}
+
+@keyframes balance-move-left {
+  0% { transform: translate(0, -27px); }
+  50% { transform: translate(3px, -40px); }
+  100% { transform: translate(0, -27px); }
+}
+
+@keyframes balance-move-right {
+  0% { transform: translate(-7px, 25px); }
+  50% { transform: translate(-12px, 38px); }
+  100% { transform: translate(-7px, 25px); }
+}
+
+.animate-balance-shake {
+  animation: balance-shake 3s infinite ease;
+  animation-delay: 1s;
+}
+
+.animate-balance-move-left {
+  animation: balance-move-left 3s infinite ease;
+  animation-delay: 1s;
+}
+
+.animate-balance-move-right {
+  animation: balance-move-right 3s infinite ease;
+  animation-delay: 1s;
+}
+
+/* =========================
+   FOOTNOTES
+   ========================= */
+
+/* =========================
+    FOOTNOTES
+    ========================= */
+
+.footnotes-sep {
+  display: none;
+}
+
+.footnotes > .footnotes-list {
+  margin-top: 12px;
+  opacity: 0.75;
+  font-size: 12px;
+  font-family: sans-serif;
+}
+
+/* =========================
+    V-MARK HIGHLIGHTS
+    ========================= */
+
+.slidev-vmark {
+  display: inline;
+  position: relative;
+  line-height: inherit;
+  vertical-align: baseline;
+  border-radius: 4px;
+  transition: all 200ms ease;
+}
+
+.slidev-vmark.box {
+  display: inline;
+  border: 2px solid;
+  background: transparent !important;
+  padding: 2px 8px;
+  white-space: normal;
+}
+
+.box {
+  border: 2px solid;
+  background: transparent !important;
+  padding: 2px 8px;
+  white-space: normal;
+  display: inline;
+}
+
+.box.red {
+  border-color: #ef4444;
+  color: #dc2626;
+}
+
+.box.yellow {
+  border-color: #eab308;
+  color: #ca8a04;
+}
+
+.box.green {
+  border-color: #22c55e;
+  color: #16a34a;
+}
+
+.box.blue {
+  border-color: #3b82f6;
+  color: #1d4ed8;
+}
+
+.highlight {
+  padding: 0px 4px;
+  white-space: normal;
+  display: inline;
+}
+
+.highlight.red {
+  background: rgba(239, 68, 68, 0.3);
+  color: #dc2626;
+}
+
+.highlight.yellow {
+  background: rgba(234, 179, 8, 0.3);
+  color: #ca8a04;
+}
+
+.highlight.green {
+  background: rgba(34, 197, 94, 0.3);
+  color: #16a34a;
+}
+
+.highlight.blue {
+  background: rgba(59, 130, 246, 0.3);
+  color: #1d4ed8;
+}
