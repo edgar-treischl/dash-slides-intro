@@ -12,7 +12,7 @@ routerMode: hash
 ---
 
 <template #title>
-Test Slides
+Dash Demo
 </template>
 
 <template #subtitle>

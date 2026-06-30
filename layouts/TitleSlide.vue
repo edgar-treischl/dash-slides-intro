@@ -19,7 +19,7 @@
         
         <!-- Author info -->
         <div class="author-info">
-          <slot name="author">Author Name</slot>
+          <slot name="author">Edgar Treischl</slot>
         </div>
         
         <!-- Date -->
