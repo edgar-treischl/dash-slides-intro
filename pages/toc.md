@@ -3,23 +3,11 @@ layout: two-cols
 layoutClass: gap-16
 ---
 
-# Table of contents
-
-<br>
-<br>
-
-## Prerequisites
+# Agenda
 
 <br>
 
-```
-No previous knowledge of Python is needed
-as the course will start with a
-quick introduction to Python.
-
-```
-
-::right::
+::left::
 
 <Toc text-sm minDepth="1" maxDepth="2" />
 

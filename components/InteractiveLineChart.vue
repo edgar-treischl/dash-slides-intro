@@ -107,7 +107,7 @@ onMounted(async () => {
 
 /* Range Selector */
 .range-selector-wrapper {
-  width: 100%;
+  width: 50%;
   box-sizing: border-box;
   padding: 16px 24px;
   background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);

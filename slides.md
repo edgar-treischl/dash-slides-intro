@@ -5,18 +5,18 @@ highlighter: shiki
 css: unocss
 colorSchema: light
 layout: TitleSlide
-transition: fade
+transition: slide-left
 selectable: true
 glowSeed: 229
 routerMode: hash
 ---
 
 <template #title>
-Dash Demo
+Hello Dash
 </template>
 
 <template #subtitle>
-Test Subtitle
+Vorstellung Dashboaring Plattform
 </template>
 
 <template #author>
@@ -27,8 +27,13 @@ Dr. Edgar Treischl
 src: ./pages/toc.md
 ---
 
+
 ---
 src: ./pages/01.md
+---
+
+---
+src: ./pages/01xx.md
 ---
 
 ---

@@ -44,7 +44,6 @@
 
 /* ===== MAIN CONTAINER ===== */
 .end-slide {
-  background: linear-gradient(135deg, #f8fbff 0%, #f0f9ff 100%);
   position: relative;
 }
 

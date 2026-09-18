@@ -194,7 +194,7 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .range-selector {
-  width: min(100%, 540px);
+  width: min(100%, 140px);
   margin: 0 auto;
   box-sizing: border-box;
 }

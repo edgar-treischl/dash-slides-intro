@@ -68,7 +68,6 @@
 
 /* ===== MAIN CONTAINER ===== */
 .welcome-slide {
-  background: linear-gradient(135deg, #f8fbff 0%, #f0f9ff 100%);
   position: relative;
 }
 
@@ -192,16 +191,6 @@
   height: 100%;
   object-fit: contain;
   border-radius: 16px;
-  animation: float-gentle 6s ease-in-out infinite;
-}
-
-@keyframes float-gentle {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
 }
 
 /* ===== UTILITY CLASSES ===== */

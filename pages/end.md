@@ -7,5 +7,5 @@ Thank You!
 </template>
 
 <template #subtitle>
-Let's connect and continue the conversation together.
+Let's connect and continue ...
 </template>
