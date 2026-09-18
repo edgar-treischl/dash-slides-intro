@@ -45,13 +45,13 @@
 
     <!-- CTA buttons - bottom right -->
     <div class="abs-br m-6 flex gap-3 cta-group">
-      <a href="#" target="_blank" rel="noopener noreferrer" class="icon-btn" title="Personal Website">
+      <a :href="profileUrl" target="_blank" rel="noopener noreferrer" class="icon-btn" title="Personal Website">
         <carbon:user-profile />
       </a>
-      <a href="#" target="_blank" rel="noopener noreferrer" class="icon-btn" title="GitHub Profile">
+      <a :href="githubUrl" target="_blank" rel="noopener noreferrer" class="icon-btn" title="GitHub Profile">
         <carbon:logo-github />
       </a>
-      <a href="#" target="_blank" rel="noopener noreferrer" class="icon-btn" title="Download PDF">
+      <a :href="pdfUrl" target="_blank" rel="noopener noreferrer" class="icon-btn" title="Download PDF">
         <carbon:document-download />
       </a>
     </div>
@@ -59,7 +59,11 @@
 </template>
 
 <script setup>
-// Empty setup block for Vue 3 reactivity
+defineProps({
+  profileUrl: { type: String, default: 'https://edgar-treischl.de' },
+  githubUrl: { type: String, default: 'https://github.com/edgar-treischl/dash-slides-intro' },
+  pdfUrl: { type: String, default: '#' }
+})
 </script>
 
 <style scoped>
@@ -235,11 +239,61 @@
 }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 1024px) {
+
+/* Mobile: 0px - 640px */
+@media (max-width: 640px) {
   .content-wrapper {
     flex-direction: column;
-    gap: 40px;
-    padding: 40px 24px;
+    gap: 20px;
+    padding: 20px 16px;
+  }
+  
+  .text-column,
+  .visual-column {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+  
+  .eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+  }
+  
+  .main-title {
+    font-size: 36px;
+    line-height: 1.2;
+  }
+  
+  .author-info {
+    font-size: 14px;
+  }
+  
+  .date-info {
+    font-size: 12px;
+  }
+  
+  .visual-container {
+    max-width: 200px;
+  }
+  
+  .abs-br {
+    bottom: 12px;
+    right: 12px;
+  }
+  
+  .icon-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+  }
+}
+
+/* Tablet: 641px - 1024px */
+@media (max-width: 1024px) and (min-width: 641px) {
+  .content-wrapper {
+    flex-direction: column;
+    gap: 32px;
+    padding: 32px 24px;
   }
   
   .text-column,
@@ -249,11 +303,46 @@
   }
   
   .main-title {
-    font-size: 64px;
+    font-size: 48px;
+  }
+  
+  .author-info {
+    font-size: 16px;
+  }
+  
+  .date-info {
+    font-size: 14px;
   }
   
   .visual-container {
-    max-width: 300px;
+    max-width: 280px;
+  }
+  
+  .abs-br {
+    bottom: 16px;
+    right: 16px;
+  }
+  
+  .icon-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+  }
+}
+
+/* Landscape mobile: prevents title overflow */
+@media (max-height: 500px) {
+  .content-wrapper {
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .main-title {
+    font-size: clamp(28px, 8vw, 48px);
+  }
+  
+  .text-column {
+    gap: 12px;
   }
 }
 </style>
