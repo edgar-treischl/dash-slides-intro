@@ -67,9 +67,6 @@ defineProps({
 </script>
 
 <style scoped>
-/* Import Playfair Display font */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700;1,800&display=swap');
-
 /* ===== MAIN CONTAINER ===== */
 .welcome-slide {
   position: relative;
@@ -124,7 +121,7 @@ defineProps({
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #0f172a;
+  color: var(--color-text-dark);
   opacity: 0.8;
   animation: fade-in 0.6s ease-out 0.2s both;
 }
@@ -137,7 +134,7 @@ defineProps({
   font-style: italic;
   line-height: 1.1;
   margin: 0;
-  background: linear-gradient(135deg, #0098d4 0%, #0077a8 100%);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -147,7 +144,7 @@ defineProps({
 /* Author info */
 .author-info {
   font-size: 20px;
-  color: #475569;
+  color: var(--color-text-main);
   line-height: 1.6;
   animation: fade-in 0.8s ease-out 0.5s both;
 }
@@ -155,7 +152,7 @@ defineProps({
 /* Date info */
 .date-info {
   font-size: 16px;
-  color: #64748b;
+  color: var(--color-text-light);
   line-height: 1.6;
   animation: fade-in 0.8s ease-out 0.6s both;
 }
@@ -212,14 +209,14 @@ defineProps({
   width: 40px;
   height: 40px;
   font-size: 24px;
-  color: #0f172a;
+  color: var(--color-text-dark);
   opacity: 0.6;
-  transition: all 0.3s ease;
-  border-radius: 8px;
+  transition: var(--transition-normal);
+  border-radius: var(--border-radius-sm);
   
   &:hover {
     opacity: 1;
-    background: rgba(0, 152, 212, 0.1);
+    background: rgba(var(--color-primary), 0.1);
     transform: translateY(-2px);
   }
 }

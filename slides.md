@@ -54,6 +54,10 @@ src: ./pages/04.md
 ---
 
 ---
+src: ./pages/04a.md
+---
+
+---
 src: ./pages/05.md
 ---
 
