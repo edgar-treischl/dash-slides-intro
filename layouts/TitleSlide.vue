@@ -62,7 +62,7 @@
 defineProps({
   profileUrl: { type: String, default: 'https://edgar-treischl.de' },
   githubUrl: { type: String, default: 'https://github.com/edgar-treischl/dash-slides-intro' },
-  pdfUrl: { type: String, default: '#' }
+  pdfUrl: { type: String, default: 'https://github.com/edgar-treischl/dash-slides-intro/blob/main/dash-slides-intro.pdf' }
 })
 </script>
 
