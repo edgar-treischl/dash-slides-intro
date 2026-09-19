@@ -6,7 +6,7 @@ export default defineConfig({
 
   vite: {
     plugins: [
-      UnoCSS(), // ✅ THIS is the missing piece
+      UnoCSS(),
     ],
 
     build: {

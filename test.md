@@ -1,5 +1,0 @@
----
-background: test.png
----
-
-# TEST
