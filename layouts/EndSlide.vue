@@ -21,13 +21,13 @@
 
     <!-- CTA buttons - bottom right (matching TitleSlide) -->
     <div class="abs-br m-6 flex gap-3 cta-group">
-      <a href="#" target="_blank" rel="noopener noreferrer" class="icon-btn" title="Personal Website">
+      <a href="https://edgar-treischl.de" target="_blank" rel="noopener noreferrer" class="icon-btn" title="Personal Website">
         <carbon:user-profile />
       </a>
-      <a href="#" target="_blank" rel="noopener noreferrer" class="icon-btn" title="GitHub Profile">
+      <a href="https://github.com/edgar-treischl" target="_blank" rel="noopener noreferrer" class="icon-btn" title="GitHub Profile">
         <carbon:logo-github />
       </a>
-      <a href="#" target="_blank" rel="noopener noreferrer" class="icon-btn" title="Download PDF">
+      <a href="https://github.com/edgar-treischl/dash-slides-intro/blob/main/dash-slides-intro.pdf" target="_blank" rel="noopener noreferrer" class="icon-btn" title="Download PDF">
         <carbon:document-download />
       </a>
     </div>

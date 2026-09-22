@@ -3,9 +3,9 @@ layout: EndSlide
 ---
 
 <template #title>
-Thank You!
+Vielen Dank für Ihre Aufmerksamkeit.
 </template>
 
 <template #subtitle>
-Let's connect and continue ...
+To be continued ... ?
 </template>
