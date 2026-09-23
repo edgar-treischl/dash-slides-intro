@@ -16,17 +16,23 @@ Hello Dash
 </template>
 
 <template #subtitle>
-Vorstellung Dashboaring Plattform
+Vorstellung der Dashboardingplattform
 </template>
 
 <template #author>
 Dr. Edgar Treischl
+
+<span> </span>
 </template>
 
 
 
 ---
 src: ./pages/02.md
+---
+
+---
+src: ./pages/statement.md
 ---
 
 ---
